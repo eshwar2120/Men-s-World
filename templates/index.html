@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Men's World</title>
+    <link rel="shortcut icon" href="{% static 'img/logo.ico' %}" />
+    <meta charset="utf-8" />
+    <link href='https://fonts.googleapis.com/css?family=Advent+Pro:300,700' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}" />
+  </head>
+  <body>
+   <header style="background-color: white; box-shadow: 0 1px 4px rgba(0, 0, 0, .1);">
+    <div class="container" style="padding-top: 8px;padding-bottom: 8px;">
+     <div class="grid grid-two">
+       <a href="{% url 'index' %}"><img src="{% static 'img/logo.jpg' %}" alt="logo" style="height: 64px ;" />
+
+     </div>
+     <div class="grid grid-two" style="padding-top: 24px;text-align: right;">
+  <span><a href="{% url 'mycart' %}">My Cart</a></span>
+     </div>
+    </div>
+   </header>
+   <main class="container">
+    <nav id="product-nav" class="full">
+     <li><a href="{% url 'index' %}">Home</a></li>
+     <li><a href="{% url 'products' %}">Products</a></li>
+     <li><a href="{% url 'about' %}">About</a></li>
+     <li><a href="{% url 'contact' %}">Contact</a></li>
+     
+     {% if email %}
+     <li style="float: right"><a href="{% url 'logout' %}">Logout</a></li>
+     {% else %}
+     <li style="float: right"><a href="{% url 'login' %}">Login</a></li>
+      <li style="float: right"><a href="{% url 'register' %}">Register</a></li>
+      {% endif %}
+    </nav>
+    <div class="full">
+    <div class="grid grid-two" style="padding-right: 8px;">
+     <div style="background-color: #fff;border: 1px solid #dededf;box-sizing: border-box;padding: 16px;">
+     <!-- start a product line -->
+      <div class="product-line full">
+        {%for i in shoe%}
+       <div class="product grid grid-two">
+        <h2>Shoes</h2>
+        <form action="details">
+        <input type="image" src="{{i.main.url}}" alt="submit" >
+        <p>{{i.name}}</p>
+        <input type="hidden" name="id" value="{{i.id}}">
+        </form>
+       </div>
+       {% endfor %}
+       <!-- a product -->
+       
+       <!-- a product -->
+      </div>
+      <!-- end a product line -->
+     <!-- start a product line -->
+      <div class="product-line full">
+        {% for i in shirt %}
+       <div class="product grid grid-two">
+        <h2>T-shirts</h2>
+        <img src="{{i.main.url}}" />
+        <p>{{i.name}}</p>
+       </div>
+       {% endfor %}
+       <!-- a product -->
+       
+       
+       <!-- a product -->
+      </div>
+      <!-- end a product line -->
+     <!-- start a product line -->
+      <div class="product-line full">
+        {% for i in jean %}
+       <div class="product grid grid-two"> <h2>Jeans</h2>
+        <form action="details">
+        <input type="image" src="{{i.main.url}}" alt="submit" >
+        <p>{{i.name}}</p>
+        <input type="hidden" name="id" value="{{i.id}}">
+        </form>
+       </div>
+       {% endfor %}
+       <!-- a product -->
+      
+       <!-- a product -->
+      </div>
+      <!-- end a product line -->
+     </div>
+    </div>
+    <div class="grid grid-two">
+
+     <div class="full">
+     <!-- Featured product box -->
+     {% for i in featured %}
+     <div class="grid grid-two">
+      <div class="box">
+       <h3 class="text-blue uppr">Featured Products</h3>
+       <div class="product">
+         <form action="details">
+        <h2>{{i.category}}</h2>
+        <input type="image" src="{{i.main.url}}" alt="submit">
+        <p>{{i.name}}</p>
+        <input type="hidden" name="id" value="{{i.id}}">
+        </form>
+       </div>
+      </div>
+     </div>
+     {% endfor %}
+     <!-- Featured product box -->
+
+     <!-- new product box -->
+     
+     <!-- finish new product box -->
+     </div>
+     <div class="light-background clear" style="width: 95%; margin: 8px auto; padding:8px 16px;box-sizing: border-box;">
+      <h2>GET HEAVY DISCOUNT</h2>
+      <p>Use coupoun code <code>ANhBA</code> to get 45% discount</p>
+     </div>
+    </div>
+    </div>
+
+   </main>
+   <footer>
+    <div class="container">
+    <div class="full">
+     <div class="grid grid-three">
+     <h4 class="text-blue">PRODUCTS</h4>
+      <ul>
+       <li>T-shirts</li>
+       <li>Jeans</li>
+       <li>Shoes</li>
+      </ul>
+     </div>
+     <div class="grid grid-three">
+     <h4 class="text-blue">LINKS</h4>
+      <ul>
+       <li>T-shirts</li>
+       <li>Jeans</li>
+       <li>Shoes</li>
+      </ul>
+     </div>
+     <div class="grid grid-three">
+     <h4 class="text-blue">CONTACT</h4>
+      <ul>
+       <li>T-shirts</li>
+       <li>Jeans</li>
+       <li>Shoes</li>
+      </ul>
+     </div>
+    </div>
+    </div>
+     <div style="text-align: center; padding: 16px;">
+       &copy; Copyright - Sujit Dhungana 2017
+     </div>
+   </footer>
+   
+
+
+  </body>
+</html>
